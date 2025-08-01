@@ -1,22 +1,22 @@
 <div class="container">
-    <form action="">
-        <div class="mb-3">
-            <label for="searchMovie" class="form-label">
-                Search for Movie:
-            </label>
-            <input type="text" class="form-control" name="searchMovie"/>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
-    </form>
+  <form action="" method="get" class="mb-3">
+    <label for="searchMovie" class="form-label">Search for Movie:</label>
+    <input type="text" class="form-control" name="searchMovie" />
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
 
-    <p>Searching for {{ searchTerm }}</p>
+  <p>Searching for {{ searchTerm }}</p>
 
-    {% for movie in movies %}
-        <h2>{{ movie.title }}</h2>
-        <h3>{{ movie.description }}</h3>
-        <img src="{{ movie.image.url }}">
-        {% if movie.url %}
-            <a href="{{ movie.url }}">Movie Link</a>
-        {% endif %}
-    {% endfor %}
+  {% for movie in movies %}
+    <h2>{{ movie.title }}</h2>
+    <h3>{{ movie.description }}</h3>
+    
+    {% if movie.image %}
+      <img src="{{ movie.image.url }}" alt="{{ movie.title }}" style="width: 200px;" />
+    {% endif %}
+    
+    {% if movie.url %}
+      <a href="{{ movie.url }}">Movie Link</a>
+    {% endif %}
+  {% endfor %}
 </div>
